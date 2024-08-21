@@ -2,7 +2,7 @@ import React from "react";
 
 const Sidebar: React.FC = () => {
   return (
-    <aside className="bg-gray-200 w-64 h-screen sticky top-0 p-4 hidden md:block">
+    <aside className="bg-gray-200 w-64 md:fixed top-16 md:top-16 md:bottom-16 p-4 hidden md:block z-40">
       <nav>
         <ul>
           <li>

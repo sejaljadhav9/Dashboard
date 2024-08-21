@@ -60,7 +60,7 @@ const CoresBarGraphComponent: React.FC = () => {
   return (
     <div className="flex flex-col">
       <h3>Core Status</h3>
-      <Chart options={options} series={series} type="bar" width="500" />;
+      <Chart options={options} series={series} type="bar" width="500" />
     </div>
   );
 };

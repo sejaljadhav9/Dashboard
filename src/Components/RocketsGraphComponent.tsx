@@ -1,37 +1,51 @@
-import React, { useEffect } from "react";
-import DataMaps from "datamaps";
+import React from "react";
+import { ComposableMap, Geographies, Geography } from "react-simple-maps";
 
 const RocketsGraphComponent: React.FC = () => {
-  console.log("in graph");
-  useEffect(() => {
-    // Initialize DataMaps
-    const map = new DataMaps({
-      projection: "mercator",
-      fills: {
-        defaultFill: "#f5f5f5", // Default fill color for countries
-        highlighted: "#ff9999", // Highlighted fill color for selected countries
-      },
-      data: {
-        USA: { fillKey: "highlighted" },
-        MH: { fillKey: "highlighted" }, // The country code for Republic of the Marshall Islands
-      },
-      geographyConfig: {
-        highlightBorderColor: "#bada55",
-        highlightBorderWidth: 2,
-        highlightFillColor: "highlighted",
-        popupTemplate: (geo: any) => {
-          return `<div>${geo.properties.name}</div>`;
-        },
-      },
-    });
+  return (
+    <div className="relative w-full h-0 pb-[56.25%] bg-white overflow-hidden">
+      {/* Aspect ratio container for responsiveness */}
+      <ComposableMap
+        projection="geoMercator"
+        projectionConfig={{
+          scale: 150, // Adjust scale if needed
+        }}
+        width={800}
+        height={400}
+        className="absolute top-0 left-0 w-full h-full"
+      >
+        <Geographies geography="../features.json">
+          {({ geographies }) => {
+            console.log("in graph",geographies);
 
-    return () => {
-      // Cleanup: Remove the map instance when the component is unmounted
-      map.updateChoropleth({});
-    };
-  }, []);
-
-  return <div id="map" style={{ height: "500px" }}></div>;
+            return geographies.map((geo) => (
+              <Geography
+                key={geo.rsmKey}
+                geography={geo}
+                stroke="#000"
+                fill="#EEE"
+                style={{
+                  default: {
+                    fill: "#D6D6DA",
+                    outline: "none",
+                  },
+                  hover: {
+                    fill: "#F53",
+                    outline: "none",
+                  },
+                  pressed: {
+                    fill: "#E42",
+                    outline: "none",
+                  },
+                }}
+              />
+            ))
+          }
+          }
+        </Geographies>
+      </ComposableMap>
+    </div>
+  );
 };
 
 export default RocketsGraphComponent;

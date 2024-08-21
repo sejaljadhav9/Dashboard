@@ -20,7 +20,7 @@ const Header: React.FC = () => {
   console.log(data);
 
   return (
-    <header className="bg-gray-800 text-white flex justify-between p-4">
+    <header className="bg-gray-800 text-white flex justify-between p-4 fixed top-0 left-0 right-0 z-50">
       <div className="flex items-center">
         <h1 className="text-xl font-bold">{data.company.name}</h1>
         <span className="ml-4">{data.company.ceo}</span>
