@@ -1,6 +1,5 @@
 import React from "react";
 import CompanyComponent from "../Components/CompanyComponent";
-import CoresChartComponent from "../Components/CoresChartComponent";
 import SearchBar from "../Components/Searchbar";
 import MainLayout from "../Layouts/MainLayout";
 import CoresBarGraphComponent from "../Components/CoresBarGraphComponent";
